@@ -4,29 +4,987 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECC006 homeworks</title>
+    <title>My Formula One </title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 700;
+            color: #e10600;
+            /* F1 Red */
+        }
+
+        a {
+            text-decoration: none;
+            color: #e10600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #990000;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #e10600;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #e10600;
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            flex-basis: 48%;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item p {
+            text-align: center;
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Page Transition */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Rules Page Specific Styles */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .rule-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #e10600;
+        }
+
+        .rule-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .rule-card ul {
+            list-style-position: inside;
+        }
+
+        .rule-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .flag-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .flag-color {
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* Teams Page Styles */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* Mercedes Page Styles */
+        .driver-profile {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 2rem;
+        }
+
+        .driver-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        .driver-details {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            border-left: 4px solid #e10600;
+        }
+
+        .stat-item h4 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* Engine Page Styles */
+        .engine-specs {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .spec-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        /* LEGO Page Styles */
+        .lego-collection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .lego-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .lego-image {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: white;
+        }
+
+        .lego-info {
+            padding: 1.5rem;
+        }
+
+        /* Jeddah Page Styles */
+        .circuit-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .circuit-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        .circuit-stats {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .gallery-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Titillium+Web:wght@600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <h2>ECC 006</h2>
-    <h1>Khatab Elcerag</h1>
-    <h1>20235150</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="rules">Rules</a></li>
+                <li><a href="#" class="nav-link" data-page="teams">Teams</a></li>
+                <li><a href="#" class="nav-link" data-page="mercedes">Mercedes</a></li>
+                <li><a href="#" class="nav-link" data-page="engine">Engines</a></li>
+                <li><a href="#" class="nav-link" data-page="lego">LEGO Collection</a></li>
+                <li><a href="#" class="nav-link" data-page="jeddah">Jeddah Race</a></li>
+            </ul>
+        </nav>
+    </header>
 
 
-    <h2>Homeworks </h2>
-    <ul>
-        <li><a href="homework1.html">Homework 1</a></li>
-        <li><a href="homework2.html">Homework 2</a></li>
-        <li><a href="homework3.html">Homework 3</a></li>
-        <li><a href="homework4.html">Homework 4</a></li>
-        <li><a href="homework5.html">Homework 5</a></li>
-        <li><a href="homework6.html">Homework 6</a></li>
-        <li><a href="homework7.html">Homework 7</a></li>
-        <li><a href="homework_8.html">Homework 8</a></li>
-        <li><a href="homework_8pt2.html">Homework 8pt2</a></li>
-        <li><a href="homework_9.html">Homework 9</a></li>
-        <li><a href="homework_10.html">Homework 10</a></li>
-    </ul>
+    <div class="page active" id="home">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('16.png');">
+            <h1>Formula One</h1>
+            <p>The peak of motorsport engineering and competition</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>My Love for Cars and Formula One</h2>
+                <p>Ever since I was a child, I've been fascinated by the speed, technology, and precision of Formula One
+                    cars. These engineering marvels represent the cutting edge of automotive technology, pushing the
+                    boundaries of what's possible on four wheels.</p>
+
+                <div class="image-gallery">
+                    <div class="gallery-item">
+
+                        <img src="2.avif" alt="Modern Formula One car">
+                        <p>The aerodynamic perfection of modern F1 cars</p>
+                    </div>
+                    <div class="gallery-item">
+
+                        <img src="1.jpg" alt="Formula One car in action">
+                        <p>Precision handling at incredible speeds</p>
+                    </div>
+                </div>
+
+                <p>What makes Formula One so special to me is the perfect combination of human skill and mechanical
+                    engineering. The drivers are among the most talented athletes in the world, capable of withstanding
+                    enormous G-forces while maintaining perfect control at speeds over 300 km/h.</p>
+
+                <p>The cars themselves are technological wonders, with hybrid power units that are more efficient than
+                    any other racing series, yet produce nearly 1000 horsepower. The carbon fiber construction, advanced
+                    aerodynamics, and precision engineering make them the fastest road-course racing cars in the world.
+                </p>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="rules">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('17.jpg');">
+            <h1>Formula One Rules</h1>
+            <p>The regulations that govern the world's fastest motorsport</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Understanding Formula One Regulations</h2>
+                <p>Formula One has a complex set of rules and regulations that govern every aspect of the sport, from
+                    car design to race procedures. These rules ensure fair competition and driver safety while pushing
+                    technological boundaries.</p>
+
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <h3>Race Weekend Format</h3>
+                        <ul>
+                            <li><strong>Practice Sessions:</strong> Three practice sessions (two on Friday, one on
+                                Saturday) to set up cars</li>
+                            <li><strong>Qualifying:</strong> Three-part knockout session on Saturday to determine
+                                starting grid</li>
+                            <li><strong>Race:</strong> Typically around 300km distance (about 2 hours maximum)</li>
+                        </ul>
+                    </div>
+
+                    <div class="rule-card">
+                        <h3>Points System</h3>
+                        <ul>
+                            <li>1st place: 25 points</li>
+                            <li>2nd place: 18 points</li>
+                            <li>3rd place: 15 points</li>
+                            <li>4th-10th: 12, 10, 8, 6, 4, 2, 1 points respectively</li>
+                            <li>Fastest lap point (if finish in top 10)</li>
+                        </ul>
+                    </div>
+
+                    <div class="rule-card">
+                        <h3>Technical Regulations</h3>
+                        <ul>
+                            <li>Car weight minimum: 798kg (including driver)</li>
+                            <li>Power unit: 1.6L V6 turbo hybrid (max 15,000 rpm)</li>
+                            <li>Fuel flow limit: 100kg/hour maximum</li>
+                            <li>Fuel load: 110kg maximum for race</li>
+                        </ul>
+                    </div>
+
+                    <div class="rule-card">
+                        <h3>Sporting Regulations</h3>
+                        <ul>
+                            <li>DRS (Drag Reduction System) zones for overtaking</li>
+                            <li>Mandatory tire compounds during race</li>
+                            <li>Blue flags for lapped cars</li>
+                            <li>Safety car and virtual safety car procedures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Flags and Their Meanings</h3>
+                <div class="flags-grid">
+                    <div class="flag-item">
+                        <div class="flag-color" style="background-color: #e10600;"></div>
+                        <p><strong>Red Flag:</strong> Session stopped immediately</p>
+                    </div>
+                    <div class="flag-item">
+                        <div class="flag-color" style="background-color: #FFD700;"></div>
+                        <p><strong>Yellow Flag:</strong> Danger, no overtaking</p>
+                    </div>
+                    <div class="flag-item">
+                        <div class="flag-color" style="background-color: #00cc00;"></div>
+                        <p><strong>Green Flag:</strong> Track clear, racing resumes</p>
+                    </div>
+                    <div class="flag-item">
+                        <div class="flag-color" style="background-color: #0000FF;"></div>
+                        <p><strong>Blue Flag:</strong> Faster car approaching, let pass</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="teams">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('18.jpeg');">
+            <h1>Formula One Teams</h1>
+            <p>The elite constructors competing at motorsport's highest level</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Famous Formula One Teams</h2>
+                <p>Formula One is a constructor's championship as much as it is a driver's championship. These teams
+                    represent the pinnacle of automotive engineering and racing excellence.</p>
+
+                <div class="teams-grid">
+                    <div class="team-card">
+
+                        <div class="team-image" style="background-image: url('M.JPG');">
+                        </div>
+                        <div class="team-info">
+                            <h3>Mercedes-AMG Petronas</h3>
+                            <p>The dominant team of the hybrid era, with 8 consecutive constructors' championships from
+                                2014-2021. Known for their technological innovation and star driver Lewis Hamilton.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+
+                        <div class="team-image" style="background-image: url('3.jpeg');">
+                        </div>
+                        <div class="team-info">
+                            <h3>Red Bull Racing</h3>
+                            <p>The energy drink company's team that dominated 2010-2013 with Sebastian Vettel. Recently
+                                returned to championship-winning form with Max Verstappen.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+
+                        <div class="team-image" style="background-image: url('4.jpg');">
+                        </div>
+                        <div class="team-info">
+                            <h3>Scuderia Ferrari</h3>
+                            <p>The most iconic and historic team in Formula One, with a record 16 constructors'
+                                championships. The only team to compete in every season since 1950.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+
+                        <div class="team-image" style="background-image: url('5.avif');">
+                        </div>
+                        <div class="team-info">
+                            <h3>McLaren</h3>
+                            <p>One of the most successful teams in F1 history, with legendary drivers like Senna and
+                                Prost. Known for their distinctive papaya orange livery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="mercedes">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('19.jpg');">
+            <h1>Mercedes & Lewis Hamilton</h1>
+            <p>The most successful team-driver combination in F1 history</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>My Favorite Team: Mercedes-AMG Petronas</h2>
+                <p>Mercedes' return to Formula One as a works team in 2010 marked the beginning of one of the most
+                    dominant eras in the sport's history. Their attention to detail, technical innovation, and
+                    relentless pursuit of perfection have made them my favorite team.</p>
+
+                <div class="driver-profile">
+
+                    <div class="driver-image" style="background-image: url('6.jpg');"></div>
+                    <div class="driver-details">
+                        <h3>Lewis Hamilton - The Greatest of All Time</h3>
+                        <p>Sir Lewis Hamilton is statistically the most successful Formula One driver in history, with 7
+                            World Championships (tied with Michael Schumacher) and the most race wins, pole positions,
+                            and podium finishes.</p>
+                        <p>What makes Hamilton special isn't just his incredible speed, but his ability to perform under
+                            pressure, his technical feedback to engineers, and his commitment to diversity and
+                            sustainability in motorsport.</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>World Championships</h4>
+                                <p>7</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Race Wins</h4>
+                                <p>103</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Pole Positions</h4>
+                                <p>104</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>Podiums</h4>
+                                <p>197</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Mercedes' Dominance</h3>
+                <p>From 2014-2021, Mercedes won every single constructors' championship, thanks to their revolutionary
+                    hybrid power unit and innovative car designs like the "diva" W08 and the "zeropod" W13. Their
+                    ability to adapt to regulation changes is unmatched.</p>
+
+
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="7.jpg" alt="Mercedes W14 Car">
+                        <p>The 2023 Mercedes W14 with its unique zero-sidepod design</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="engine">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('20.jpeg');">
+            <h1>Formula One Engines</h1>
+            <p>The technological marvels powering F1 cars</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Formula One Power Units</h2>
+                <p>Modern Formula One engines are hybrid power units that represent the pinnacle of automotive
+                    engineering, combining internal combustion with energy recovery systems for incredible efficiency
+                    and power.</p>
+
+
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="8.jpg" alt="F1 Power Unit">
+                        <p>The complex hybrid power unit used in modern F1 cars</p>
+                    </div>
+                </div>
+
+                <div class="engine-specs">
+                    <h3>Technical Specifications</h3>
+                    <div class="spec-item">
+                        <h4>Configuration</h4>
+                        <p>1.6L V6 turbocharged hybrid</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Rev Limit</h4>
+                        <p>15,000 rpm (limited by fuel flow regulations)</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Power Output</h4>
+                        <p>Approx. 1000 hp (combined ICE and hybrid systems)</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Energy Recovery Systems</h4>
+                        <p>MGU-K (Motor Generator Unit - Kinetic) and MGU-H (Motor Generator Unit - Heat)</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Fuel Efficiency</h4>
+                        <p>Over 50% thermal efficiency (most efficient engines in the world)</p>
+                    </div>
+                </div>
+
+                <h3>Manufacturers</h3>
+                <p>Currently, there are four power unit manufacturers in Formula One:</p>
+
+                <div class="rules-grid" style="margin-top: 2rem;">
+                    <div class="rule-card">
+                        <h4>Mercedes</h4>
+                        <p>The benchmark in the hybrid era, known for their reliability and performance</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Ferrari</h4>
+                        <p>Historically strong, with powerful engines that sometimes sacrifice reliability</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Renault</h4>
+                        <p>Pioneers of turbocharging in F1, now Alpine</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Honda (Red Bull Powertrains)</h4>
+                        <p>Recently left F1 but their engines power Red Bull's championship-winning cars</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="lego">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('21.jpg');">
+            <h1>My LEGO Formula One Collection</h1>
+            <p>Building my passion one brick at a time</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>My LEGO Formula One Cars</h2>
+                <p>As a Formula One fan, I've collected several LEGO Technic sets that allow me to build and display
+                    detailed replicas of these incredible machines. Here are the four sets in my collection:</p>
+
+                <div class="lego-collection">
+                    <div class="lego-item">
+
+                        <div class="lego-image" style="background-image: url('9.jpeg');">
+                        </div>
+                        <div class="lego-info">
+                            <h3>LEGO Technic McLaren Formula 1 Race Car</h3>
+                            <p>Set #42141 - 1,432 pieces</p>
+                            <p>This detailed build features working steering, V6 engine with moving pistons, and
+                                adjustable rear wing.</p>
+                        </div>
+                    </div>
+
+                    <div class="lego-item">
+
+                        <div class="lego-image" style="background-image: url('10.jpg');">
+                        </div>
+                        <div class="lego-info">
+                            <h3>LEGO Technic Mercedes-AMG F1 W14</h3>
+                            <p>Set #42171 - 1,642 pieces</p>
+                            <p>A replica of Lewis Hamilton's 2023 car with detailed aerodynamics and authentic livery.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lego-item">
+
+                        <div class="lego-image" style="background-image: url('12.jpeg');">
+                        </div>
+                        <div class="lego-info">
+                            <h3>LEGO Ferrari SF-24</h3>
+                            <p>Set #42207 - 1361 pieces</p>
+                            <p>One of the best detailed Ferrari F1 car with mini-figures of Charles Leclerc and
+                                Carlos Sainz.</p>
+                        </div>
+                    </div>
+
+                    <div class="lego-item">
+
+                        <div class="lego-image" style="background-image: url('11.jpeg');">
+                        </div>
+                        <div class="lego-info">
+                            <h3>LEGO Technic Red Bull Racing RB18</h3>
+                            <p>Set #42153 - 1,414 pieces</p>
+                            <p>Max Verstappen's 2022 championship-winning car with detailed suspension and aerodynamics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Why LEGO and Formula One?</h3>
+                <p>LEGO Technic sets perfectly capture the engineering complexity of Formula One cars. Building these
+                    models helps me understand the intricate details of F1 car design, from suspension geometry to
+                    aerodynamic surfaces.</p>
+
+
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="13.avif" alt="My LEGO F1 Collection">
+                        <p>My display of LEGO Formula One cars</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="page" id="jeddah">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('22.jpeg');">
+            <h1>Saudi Arabian Grand Prix</h1>
+            <p>The fastest street circuit in Formula One</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Jeddah Corniche Circuit</h2>
+                <p>The Saudi Arabian Grand Prix, held at the Jeddah Corniche Circuit, is one of the most exciting
+                    additions to the Formula One calendar. This high-speed street circuit combines the challenge of
+                    walls with the speed of a permanent racetrack.</p>
+
+                <div class="circuit-info">
+                    <!-- Replace with Jeddah circuit image -->
+                    <div class="circuit-image" style="background-image: url('14.jpg');"></div>
+                    <div class="circuit-stats">
+                        <h3>Circuit Statistics</h3>
+                        <ul>
+                            <li><strong>First Grand Prix:</strong> 2021</li>
+                            <li><strong>Circuit Length:</strong> 6.174 km</li>
+                            <li><strong>Number of Turns:</strong> 27</li>
+                            <li><strong>Race Distance:</strong> 308.45 km (50 laps)</li>
+                            <li><strong>Lap Record:</strong> 1:30.734 (Lewis Hamilton, 2021)</li>
+                            <li><strong>Top Speed:</strong> Over 320 km/h</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2023 Saudi Arabian Grand Prix Highlights</h3>
+                <p>The 2023 race in Jeddah was particularly memorable, with intense battles throughout the field and a
+                    dramatic finish.</p>
+
+                <div class="rules-grid" style="margin-top: 2rem;">
+                    <div class="rule-card">
+                        <h4>Pole Position</h4>
+                        <p>Sergio Pérez (Red Bull Racing)</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Race Winner</h4>
+                        <p>Sergio Pérez (Red Bull Racing)</p>
+                    </div>
+                    <div class="rule-card">
+                        <h4>Fastest Lap</h4>
+                        <p>Max Verstappen (Red Bull Racing)</p>
+                    </div>
+                </div>
+
+                <!-- Replace with image from 2023 Jeddah race -->
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="15.jpg" alt="2023 Saudi Arabian GP">
+                        <p>The dramatic night race under Jeddah's lights</p>
+                    </div>
+                </div>
+
+                <h3>Why Jeddah Stands Out</h3>
+                <p>What makes Jeddah special is its unique combination of high-speed corners and street circuit walls.
+                    Drivers describe it as one of the most challenging tracks on the calendar, requiring absolute
+                    precision at speeds over 300 km/h with minimal runoff areas.</p>
+                <p>The night race setting adds to the spectacle, with the circuit illuminated by thousands of lights
+                    that create a stunning visual experience.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Formula One Fan Project</p>
+            <p>All images and trademarks belong to their respective owners</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation with transitions
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            // Set initial active page
+            let currentPage = document.getElementById('home');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Get the page to show
+                    const pageId = this.getAttribute('data-page');
+                    const nextPage = document.getElementById(pageId);
+
+                    // If already on this page, do nothing
+                    if (nextPage === currentPage) return;
+
+                    // Add fade out animation to current page
+                    currentPage.style.animation = 'fadeOut 0.5s ease-in-out';
+
+                    // After fade out completes
+                    setTimeout(() => {
+                        // Hide current page
+                        currentPage.classList.remove('active');
+
+                        // Show next page with fade in
+                        nextPage.classList.add('active');
+                        nextPage.style.animation = 'fadeIn 0.5s ease-in-out';
+
+                        // Update current page reference
+                        currentPage = nextPage;
+
+                        // Update active nav link
+                        navLinks.forEach(navLink => navLink.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    }, 500);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
